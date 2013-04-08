@@ -1,0 +1,39 @@
+﻿<Window x:Class="Shash.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Shash" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="Auto"/>
+            
+            <!-- Load File, SHA mode-->
+            <RowDefinition Height="Auto"/>
+            
+            <!-- Hash result-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Plaintext entry -->
+        <Label Grid.Row="0" Content="Plaintext"/>
+        <TextBox Grid.Row="1" Margin="6,0,6,6" Name="PlaintextTextBox" LostFocus="UpdatePlainText" FontFamily="Consolas"/>
+        
+        <!-- Plaintext controls -->
+        <Button Grid.Row="2" Margin="6,0,6,6" Width="120" Content="Load File" HorizontalAlignment="Left" Height="24" Click="LoadFile"/>
+        <Button Grid.Row="2" Margin="132,0,6,6" Width="120" Content="Verify File" HorizontalAlignment="Left" Height="24" Click="VerifyFile"/>
+        <Button Grid.Row="2" Margin="6,0,6,6" Width="100" Content="Hash" HorizontalAlignment="Right" Height="24" IsDefault="True" Click="GenerateAndDisplayHash"/>
+        <ComboBox HorizontalAlignment="Right" Height="24" Margin="6,0,112,6" Width="100" Grid.Row="2" Name="HashModeComboBox">
+            <ComboBoxItem Content="Mode" IsEnabled="False" IsSelected="True"/>
+            <ComboBoxItem Content="SHA-1"/>
+            <ComboBoxItem Content="SHA-256"/>
+            <ComboBoxItem Content="SHA-512"/>
+        </ComboBox>
+
+        <!-- Hash result -->
+        <Label Grid.Row="3" Content="Hash"/>
+        <TextBox Grid.Row="4" Margin="6,0,112,6" Height="24" Name="HashTextBox" FontFamily="Consolas"/>
+        <Button Grid.Row="4" Margin="6,0,6,6" Width="100" Content="Save to File" HorizontalAlignment="Right" Height="24" Click="SaveHashToFile"/>
+    </Grid>
+</Window>
